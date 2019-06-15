@@ -39,7 +39,8 @@ class CommentsSection extends React.Component {
     onFilterChange(filter) {
         if (filter) {
             let filtered = this.state.commentList.concat().filter((comment) => {
-                return comment.email.includes(filter) || comment.message.includes(filter);
+                return (comment.email.toLowerCase().includes(filter.toLowerCase()) ||
+                       comment.message.toLowerCase().includes(filter.toLowerCase()));
             });
 
             this.setState({filteredComments: this.sortComments(filtered), isFilter: true});
